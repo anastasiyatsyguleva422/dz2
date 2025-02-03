@@ -160,32 +160,32 @@
 //}
 
 //5
-import java.io.*;
-import java.nio.*;
-import java.nio.channels.*;
-import java.nio.file.*;
-import java.nio.file.attribute.*;
-import java.util.concurrent.*;
-
-public class NIO {
-    public static void main(String[] args) throws IOException {
-        Path path = Paths.get("largeFile.txt");
-        AsynchronousFileChannel channel = AsynchronousFileChannel.open(path, StandardOpenOption.READ);
-        ByteBuffer buffer = ByteBuffer.allocate(1024);
-
-        channel.read(buffer, 0, null, new CompletionHandler<Integer, Void>() {
-            @Override
-            public void completed(Integer result, Void attachment) {
-                buffer.flip(); // Переводим буфер в режим чтения
-                System.out.println(new String(buffer.array(), 0, result));
-                buffer.clear(); // Очистка буфера
-            }
-
-            @Override
-            public void failed(Throwable exc, Void attachment) {
-                exc.printStackTrace();
-            }
-        });
-    }
-}
+//import java.io.*;
+//import java.nio.*;
+//import java.nio.channels.*;
+//import java.nio.file.*;
+//import java.nio.file.attribute.*;
+//import java.util.concurrent.*;
+//
+//public class NIO {
+//    public static void main(String[] args) throws IOException {
+//        Path path = Paths.get("largeFile.txt");
+//        AsynchronousFileChannel channel = AsynchronousFileChannel.open(path, StandardOpenOption.READ);
+//        ByteBuffer buffer = ByteBuffer.allocate(1024);
+//
+//        channel.read(buffer, 0, null, new CompletionHandler<Integer, Void>() {
+//            @Override
+//            public void completed(Integer result, Void attachment) {
+//                buffer.flip(); // Переводим буфер в режим чтения
+//                System.out.println(new String(buffer.array(), 0, result));
+//                buffer.clear(); // Очистка буфера
+//            }
+//
+//            @Override
+//            public void failed(Throwable exc, Void attachment) {
+//                exc.printStackTrace();
+//            }
+//        });
+//    }
+//}
 
